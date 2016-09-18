@@ -4,7 +4,7 @@
         <div class = 'container'>
             <h1>Fotosmoto Index</h1>
             <form class = 'col s3' method = 'get' action = '{{url("fotosmoto")}}/create'>
-                <button class = 'btn btn-primary' type = 'submit'>Create New Fotosmoto</button>
+                <button class = 'btn btn-primary' type = 'submit'>Agregar Nuevas Fotos</button>
             </form>
             <br>
             
