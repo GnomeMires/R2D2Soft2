@@ -36,17 +36,22 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="fechaInforme">fechaInforme</label>
+                    <label for="fechaInforme">Fecha</label>
                     <input id="fechaInforme" name = "fechaInforme" type="date" class="form-control">
                 </div>
                 
                 <div class="form-group">
-                    <label for="descripcionReparacion">descripcionReparacion</label>
+                    <label for="descripcionReparacion">Descripcion de Reparacion</label>
                     <textarea id="descripcionReparacion" name = "descripcionReparacion" class="form-control"></textarea>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="sugerencias">sugerencias</label>
+                    <label for="observaciones">Observaciones</label>
+                    <textarea id="observaciones" name = "observaciones" class="form-control"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="sugerencias">Sugerencias</label>
                     <textarea id="sugerencias" name = "sugerencias" class="form-control"></textarea>
                 </div>
 

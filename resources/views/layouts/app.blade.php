@@ -109,6 +109,7 @@
 </body>
 <script> var baseURL = "{{URL::to('/')}}"</script>
 <script src = "{{ URL::asset('js/AjaxisBootstrap.js')}}"></script>
+<script src = "{{ URL::asset('js/funciones.js')}}"></script>
 <script src = "{{ URL::asset('js/scaffold-interface-js/customA.js')}}"></script>
 <script>$('select').select2();</script>
 <script>

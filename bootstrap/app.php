@@ -41,6 +41,8 @@ $app->singleton(
     R2D2Soft\Exceptions\Handler::class
 );
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

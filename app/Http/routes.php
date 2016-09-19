@@ -121,6 +121,7 @@ Route::get('compra/{id}/deleteMsg','\R2D2Soft\Http\Controllers\CompraController@
 /********************* informecontrato ***********************************************/
 Route::resource('informecontrato','\R2D2Soft\Http\Controllers\InformecontratoController');
 Route::get('informecontrato/{id}/create','\R2D2Soft\Http\Controllers\InformecontratoController@create');
+Route::get('informecontrato/{id}/imprimirProforma','\R2D2Soft\Http\Controllers\InformecontratoController@imprimirProforma');
 Route::post('informecontrato/{id}/update','\R2D2Soft\Http\Controllers\InformecontratoController@update');
 Route::get('informecontrato/{id}/showProforma','\R2D2Soft\Http\Controllers\InformecontratoController@showProforma');
 Route::get('informecontrato/{id}/delete','\R2D2Soft\Http\Controllers\InformecontratoController@destroy');

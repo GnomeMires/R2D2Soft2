@@ -8,46 +8,26 @@
             </form>
             <br>
             
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Associate
-                <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    
-                    <li><a href="/moto">Moto</a></li>
-                    
-                </ul>
-            </div>
+
             
             <br>
             <table id="pagination" class = "table table-striped table-bordered">
                 <thead>
                     
-                    <th>descripcionEstado</th>
+                    <th>Descripcion</th>
                     
-                    <th>fechaFoto</th>
+                    <th>Fecha</th>
                     
-                    <th>direccionFoto</th>
+                    <th>Direccion Fisica</th>
                     
-                    
-                    
-                    
-                    <th>noChasis</th>
-                    
-                    <th>noMotor</th>
-                    
-                    <th>placaControl</th>
-                    
-                    <th>color</th>
-                    
-                    <th>marca</th>
-                    
-                    <th>detalles</th>
+
+                    <th>Placa</th>
+
+                    <th>Marca</th>
                     
                     
                     
-                    <th>actions</th>
+                    <th>Acciones</th>
                 </thead>
                 <tbody>
                     @foreach($fotosmotos as $Fotosmoto)
@@ -60,20 +40,11 @@
                         <td>{{$Fotosmoto->direccionFoto}}</td>
                         
                         
-                        
-                                                <td>{{$Fotosmoto->moto->noChasis}}</td>
 
-                                                <td>{{$Fotosmoto->moto->noMotor}}</td>
 
                                                 <td>{{$Fotosmoto->moto->placaControl}}</td>
 
-                                                <td>{{$Fotosmoto->moto->color}}</td>
-
                                                 <td>{{$Fotosmoto->moto->marca}}</td>
-
-                                                <td>{{$Fotosmoto->moto->detalles}}</td>
-
-                        
                         
                         
                         <td>

@@ -30,6 +30,19 @@
                     <label for="descripcion">Descripcion</label>
                     <input id="descripcion" name = "descripcion" type="text" class="form-control">
                 </div>
+
+                <div class="form-group">
+                    <label for="precioUnitario">Precio Unitario Bs.</label>
+                    <input id="precioUnitario" name = "precioUnitario" type="text" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="origenRepuesto">Origen</label>
+                    <Select id="origenRepuesto" name = "origenRepuesto" type="text" class="form-control">
+                        <option value="Inventario">Inventario</option>
+                        <option value="Cliente">Cliente</option>
+                    </Select>
+                </div>
                 
                 
                 <div class="form-group">

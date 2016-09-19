@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--Let browser know website is optimized for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Edit Informecontrato</title>
-    </head>
-    <body>
+@extends('layouts.app')
+
+@section('content')
         <div class = 'container'>
             <h1>Edit Informecontrato</h1>
             <form method = 'get' action = '{{url("informecontrato")}}'>
@@ -17,51 +9,57 @@
             <br>
             <form method = 'POST' action = '{{url("informecontrato")}}/{{$informecontrato->id}}/update'>
                 <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
-                
                 <div class="form-group">
-                    <label for="destinatario">destinatario</label>
+                    <label for="destinatario">Destinatario</label>
                     <input id="destinatario" name = "destinatario" type="text" class="form-control" value="{{$informecontrato->destinatario}}">
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="via">via</label>
+                    <label for="cargoDestinatario">Cargo Destinatario</label>
+                    <input id="cargoDestinatario" name = "cargoDestinatario" type="text" class="form-control" value="{{$informecontrato->destinatario}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="via">Via</label>
                     <input id="via" name = "via" type="text" class="form-control" value="{{$informecontrato->via}}">
                 </div>
-                
+
+                <div class="form-group">
+                    <label for="cargoVia">Cargo Via</label>
+                    <input id="cargoVia" name = "cargoVia" type="text" class="form-control" value="{{$informecontrato->via}}">
+                </div>
+
                 <div class="form-group">
                     <label for="referido">referido</label>
                     <input id="referido" name = "referido" type="text" class="form-control" value="{{$informecontrato->referido}}">
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="fechaInforme">fechaInforme</label>
-                    <input id="fechaInforme" name = "fechaInforme" type="text" class="form-control" value="{{$informecontrato->fechaInforme}}">
+                    <label for="fechaInforme">Fecha</label>
+                    <input id="fechaInforme" name = "fechaInforme" type="date" class="form-control" value="{{$informecontrato->fechaInforme}}">
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="descripcionReparacion">descripcionReparacion</label>
-                    <input id="descripcionReparacion" name = "descripcionReparacion" type="text" class="form-control" value="{{$informecontrato->descripcionReparacion}}">
+                    <label for="descripcionReparacion">Descripcion de Reparacion</label>
+                    <textarea id="descripcionReparacion" name = "descripcionReparacion" class="form-control">{{$informecontrato->descripcionReparacion}}</textarea>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="sugerencias">sugerencias</label>
-                    <input id="sugerencias" name = "sugerencias" type="text" class="form-control" value="{{$informecontrato->sugerencias}}">
+                    <label for="observaciones">Observaciones</label>
+                    <textarea id="observaciones" name = "observaciones" class="form-control">{{$informecontrato->observaciones}}</textarea>
                 </div>
-                
-                
+
                 <div class="form-group">
-                    <label>trabajomotos Select</label>
-                    <select name = 'trabajomoto_id' class = "form-control">
-                        @foreach($trabajomotos as $key => $value)
-                        <option value="{{$key}}">{{$value}}</option>
-                        @endforeach
-                    </select>
+                    <label for="sugerencias">Sugerencias</label>
+                    <textarea id="sugerencias" name = "sugerencias" class="form-control">{{$informecontrato->sugerencias}}</textarea>
                 </div>
-                
-                <button class = 'btn btn-primary' type ='submit'>Update</button>
+
+
+                <div class="form-group">
+                    <input name = 'trabajomoto_id' class = 'form-control' type="hidden" value="{{$informecontrato->id}}">
+                </div>
+
+                <button class = 'btn btn-primary' type ='submit'>Actualizar</button>
             </form>
         </div>
-    </body>
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</html>
+@endsection

@@ -60,7 +60,7 @@ class RepuestosutilizadoController extends Controller
     public function store(Request $request)
     {
         $repuesto = Repuestosmoto::findorfail($request->repuestosmoto_id);
-        if($repuesto->cantidad>=$request->cantidad) {
+        if($repuesto->cantidad>=$request->cantidad && $request->origenRepuesto != "Cliente") {
             $repuestosutilizado = new Repuestosutilizado();
 
 
@@ -73,7 +73,7 @@ class RepuestosutilizadoController extends Controller
             $repuestosutilizado->descripcion = $request->descripcion;
 
 
-            if($request->origenRepuesto == "Propio")
+            if($request->precioUnitario != null)
             {
                 $repuestosutilizado->precioUnitario = $request->precioUnitario;
                 $repuestosutilizado->precioTotal = $request->precioUnitario*$request->cantidad;
@@ -90,15 +90,49 @@ class RepuestosutilizadoController extends Controller
             $repuestosutilizado->repuestosmoto_id = $request->repuestosmoto_id;
 
 
+            $repuestosutilizado->origenRepuesto = $request->origenRepuesto;
+
+
             $repuestosutilizado->save();
 
 
-            if($request->origenRepuesto != "Propio")
-            {
-                $repuesto->cantidad -= $request->cantidad;
-                $repuesto->save();
-            }
+            $repuesto->cantidad -= $request->cantidad;
 
+            $repuesto->save();
+        }
+        else
+        {
+            if($request->origenRepuesto == "Cliente")
+            {
+                $repuestosutilizado = new Repuestosutilizado();
+
+
+                $repuestosutilizado->fechaUso = date('d/m/Y');
+
+
+                $repuestosutilizado->cantidad = $request->cantidad;
+
+
+                $repuestosutilizado->descripcion = $request->descripcion;
+
+
+                $repuestosutilizado->precioUnitario = 0;
+
+
+                $repuestosutilizado->precioTotal = 0;
+
+
+                $repuestosutilizado->trabajomoto_id = $request->trabajomoto_id;
+
+
+                $repuestosutilizado->repuestosmoto_id = $request->repuestosmoto_id;
+
+
+                $repuestosutilizado->origenRepuesto = $request->origenRepuesto;
+
+
+                $repuestosutilizado->save();
+            }
         }
 
         $taller = Datosempresa::findOrfail(1);

@@ -7,6 +7,7 @@ use R2D2Soft\Http\Controllers\Controller;
 use R2D2Soft\Informecontrato;
 use Amranidev\Ajaxis\Ajaxis;
 use URL;
+use Barryvdh\DomPDF\Facade as PDF;
 
 use R2D2Soft\Trabajomoto;
 use R2D2Soft\Repuestosutilizado;
@@ -76,6 +77,8 @@ class InformecontratoController extends Controller
         
         $informecontrato->sugerencias = $request->sugerencias;
 
+
+        $informecontrato->observaciones = $request->observaciones;
         
         
         $informecontrato->trabajomoto_id = $request->trabajomoto_id;
@@ -117,6 +120,23 @@ class InformecontratoController extends Controller
         return view('informecontrato.imprimirInforme',compact('trabajomoto','taller','repuestosUtilizados','detalletrabajos','informecontrato'));
     }
 
+    public function imprimirProforma($id,Request $request)
+    {
+        if($request->ajax())
+        {
+            return URL::to('informecontrato/'.$id.'/imprimirProforma');
+        }
+        $informecontrato = Informecontrato::findOrfail($id);
+        $taller = Datosempresa::findOrfail(1);
+
+        $idTrabajo = $informecontrato->trabajomoto_id;
+        $trabajomoto = Trabajomoto::findOrfail($idTrabajo);
+        $repuestosUtilizados = Repuestosutilizado::where('trabajomoto_id',$idTrabajo)->get();
+
+        $pdf = PDF::loadView('informecontrato.proforma',compact('trabajomoto','taller','repuestosUtilizados','informecontrato'));
+        return $pdf->stream();
+    }
+
     public function showProforma($id,Request $request)
     {
         if($request->ajax())
@@ -151,7 +171,7 @@ class InformecontratoController extends Controller
 
         
         $informecontrato = Informecontrato::findOrfail($id);
-        return view('informecontrato.edit',compact('informecontrato' ,'trabajomotos' ) );
+        return view('informecontrato.edit',compact('informecontrato' ,'$informecontrato' ) );
     }
 
     /**
@@ -176,7 +196,8 @@ class InformecontratoController extends Controller
         $informecontrato->descripcionReparacion = $request->descripcionReparacion;
         
         $informecontrato->sugerencias = $request->sugerencias;
-        
+
+        $informecontrato->observaciones = $request->observaciones;
         
         $informecontrato->trabajomoto_id = $request->trabajomoto_id;
 

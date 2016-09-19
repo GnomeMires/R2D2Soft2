@@ -38,13 +38,12 @@
 
                 <td>{{$RepuestosUtilizado->cantidad}}</td>
 
-                <td>{{$RepuestosUtilizado->repuestosmoto->nombreRepuesto}}</td>
-
-                <td>{{$RepuestosUtilizado->descripcion}}</td>
+                <td>{{$RepuestosUtilizado->repuestosmoto->nombreRepuesto}} - {{$RepuestosUtilizado->descripcion}}</td>
 
                 <td>{{$RepuestosUtilizado->precioUnitario}}</td>
 
                 <td>{{$RepuestosUtilizado->precioTotal}}</td>
+            <?php $totalRU += $RepuestosUtilizado->precioTotal; ?>
             </tr>
         @endforeach
 
@@ -54,12 +53,12 @@
                 <p><strong>TOTAL</strong></p>
             </td>
             <td style="width: 68px;">
-                <p><strong>&nbsp;</strong></p>
+                <p><strong>{{$totalRU}}</strong></p>
             </td>
         </tr>
         </tbody>
     </table>
     </div>
     <br>
-    <p align="center"><a href = '#' class = 'btn btn-primary'>Imprimir</a></p>
+    <p align="center"><a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/informecontrato/{{$informecontrato->id}}/imprimirProforma' target="_blank"><i class = 'material-icons'>print</i>Imprimir</a></p>
 @endsection

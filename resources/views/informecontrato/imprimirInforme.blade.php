@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class = 'container'>
+<div id = "container" class = 'container'>
     <h1 align="center">Informe de Recepcion</h1>
     <br>
 
@@ -65,8 +65,10 @@
         </tbody>
     </table>
     <p>{{$informecontrato->descripcionReparacion}}</p>
-    <p><strong>3. SUGERENCIAS Y/O RECOMENDACIONES</strong></p>
+    <p><strong>3. OBSERVACIONES</strong></p>
+    <p>{{$informecontrato->observaciones}}</p>
+    <p><strong>4. SUGERENCIAS Y/O RECOMENDACIONES</strong></p>
     <p>{{$informecontrato->sugerencias}}</p>
 </div>
-<p align="center"><a href = '#' class = 'btn btn-primary'>Imprimir</a></p>
+<p align="center"><a onclick = "imprSelect('container')" class = 'btn btn-primary'>Imprimir</a></p>
 @endsection
