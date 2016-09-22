@@ -21,12 +21,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="fechaUso">fechaUso</label>
+                    <label for="fechaUso">Fecha</label>
                     <input id="fechaUso" name = "fechaUso" type="date" class="form-control" value="{{$repuestosutilizado->fechaUso}}">
                 </div>
                 
                 <div class="form-group">
-                    <label for="cantidad">cantidad</label>
+                    <label for="cantidad">Cantidad</label>
                     <input id="cantidad" name = "cantidad" type="text" class="form-control" value="{{$repuestosutilizado->cantidad}}">
                 </div>
 

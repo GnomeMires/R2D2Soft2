@@ -147,7 +147,7 @@ class DatosempresaController extends Controller
      */
     public function DeleteMsg($id,Request $request)
     {
-        $msg = Ajaxis::BtDeleting('Warning!!','Would you like to remove This?','/datosempresa/'. $id . '/delete/');
+        $msg = Ajaxis::BtDeleting('Advertencia!!','¿Esta seguro de Eliminar este Registro?','/datosempresa/'. $id . '/delete/');
 
         if($request->ajax())
         {

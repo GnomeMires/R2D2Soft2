@@ -98,7 +98,7 @@
                     <td>
                         <a data-toggle="modal" data-target="#myModal" class = 'delete btn btn-danger btn-xs' data-link = "/detalletrabajo/{{$Detalletrabajo->id}}/deleteMsg" ><i class = 'material-icons'>delete</i></a>
                         <a href = '#' class = 'viewEdit btn btn-primary btn-xs' data-link = '/detalletrabajo/{{$Detalletrabajo->id}}/edit'><i class = 'material-icons'>edit</i></a>
-                        <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/detalletrabajo/{{$Detalletrabajo->id}}'><i class = 'material-icons'>info</i></a>
+                        <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/detalletrabajo/{{$Detalletrabajo->id}}'><i class = 'material-icons'>zoom_in</i></a>
                     </td>
                 </tr>
             @endforeach
@@ -141,7 +141,7 @@
                     <td>
                         <a data-toggle="modal" data-target="#myModal" class = 'delete btn btn-danger btn-xs' data-link = "/repuestosutilizado/{{$RepuestosUtilizado->id}}/deleteMsg" ><i class = 'material-icons'>delete</i></a>
                         <a href = '#' class = 'viewEdit btn btn-primary btn-xs' data-link = '/repuestosutilizado/{{$RepuestosUtilizado->id}}/edit'><i class = 'material-icons'>edit</i></a>
-                        <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/repuestosutilizado/{{$RepuestosUtilizado->id}}'><i class = 'material-icons'>info</i></a>
+                        <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/repuestosutilizado/{{$RepuestosUtilizado->id}}'><i class = 'material-icons'>zoom_in</i></a>
                     </td>
                 </tr>
 
@@ -153,6 +153,7 @@
             </tbody>
         </table>
         <form method = 'POST' action = '{{url("trabajomoto")}}/{{$trabajomoto->id}}/imprimirRecibo'>
+            <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
         <table width="100%">
             <tr>
                 <td align="right">
@@ -164,7 +165,12 @@
                     <table>
                         <tr>
                             <td><atrong>Adelantado Bs.</atrong></td>
-                            <td><input id="adelantado" name = "adelantado" type="number" class="form-control" value="0.00"></td>
+                            @if($trabajomoto->costoTotal==-1)
+                                <td><input id="adelantado" name = "adelantado" type="number" class="form-control" value="0.00"></td>
+                            @else
+                                <td><input readonly id="adelantado" name = "adelantado" type="number" class="form-control" value="{{$trabajomoto->costoTotal}}"></td>
+                            @endif
+
                         </tr>
                     </table>
 
@@ -173,8 +179,10 @@
         </table>
         <br><br>
             <div align="right">
-            <button class = 'btn btn-danger' type="submit" >Imprimir Recibo</button>
-            <a href = '{{url("informecontrato")}}/{{$trabajomoto->id}}/create' class = 'btn btn-primary'>Realizar Informe</a>
+                @if($trabajomoto->costoTotal==-1)
+                    <button class = 'btn btn-danger' type="submit" >Imprimir Recibo</button>
+                @endif
+
             </div>
         <br><br>
         </form>

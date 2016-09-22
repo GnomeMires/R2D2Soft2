@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use R2D2Soft\Http\Controllers\Controller;
 use R2D2Soft\Informeentrega;
 use Amranidev\Ajaxis\Ajaxis;
+use R2D2Soft\Repuestosutilizado;
+use R2D2Soft\Detalletrabajo;
 use URL;
 
 use R2D2Soft\Persona;
@@ -46,9 +48,8 @@ class InformeentregaController extends Controller
         }
         $trabajomotos = Trabajomoto::findOrfail($id);
         $trabajomotoID = $id;
-        $personas = Persona::find($trabajomotos->moto->persona->id);
-        $personaID = $personas->id;
-        return view('informeentrega.create',compact('personaID' , 'trabajomotoID'  ));
+        $personas = Persona::all()->lists('nombreCompleto','id');
+        return view('informeentrega.create',compact('personas' , 'trabajomotoID'  ));
     }
 
     /**
@@ -73,11 +74,35 @@ class InformeentregaController extends Controller
         
         $informeentrega->noFactura = $request->noFactura;
 
-        
-        
-        $informeentrega->persona_id = $request->persona_id;
+        if(strpos($request->origenPersona ,'N')!==false) {
+            $persona = new Persona();
 
-        
+
+            $persona->nombreCompleto = $request->nombreCompleto;
+
+
+            $persona->nitCI = $request->nitCI;
+
+
+            $persona->direccion = $request->direccion;
+
+
+            $persona->Telefono = $request->Telefono;
+
+
+            $persona->Celular = $request->Celular;
+
+            $persona->save();
+
+            $id = $persona->id;
+
+            $informeentrega->persona_id = $id;
+        }
+        else
+        {
+            $informeentrega->persona_id = $request->persona_id;
+        }
+
         $informeentrega->trabajomoto_id = $request->trabajomoto_id;
 
         
@@ -101,7 +126,10 @@ class InformeentregaController extends Controller
         }
 
         $informeentrega = Informeentrega::findOrfail($id);
-        return view('informeentrega.imprimirInformeEntrega',compact('informeentrega'));
+        $trabajoId = $informeentrega->trabajomoto->id;
+        $repuestosUtilizados = Repuestosutilizado::where('trabajomoto_id',$trabajoId)->get();
+        $detalletrabajos = Detalletrabajo::where('trabajomoto_id',$trabajoId)->get();
+        return view('informeentrega.imprimirInformeEntrega',compact('informeentrega','repuestosUtilizados','detalletrabajos'));
     }
 
     /**
@@ -168,7 +196,7 @@ class InformeentregaController extends Controller
      */
     public function DeleteMsg($id,Request $request)
     {
-        $msg = Ajaxis::BtDeleting('Warning!!','Would you like to remove This?','/informeentrega/'. $id . '/delete/');
+        $msg = Ajaxis::BtDeleting('Advertencia!!','¿Esta seguro de Eliminar este Registro?','/informeentrega/'. $id . '/delete/');
 
         if($request->ajax())
         {

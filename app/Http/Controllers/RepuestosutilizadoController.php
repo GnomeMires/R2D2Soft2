@@ -63,8 +63,9 @@ class RepuestosutilizadoController extends Controller
         if($repuesto->cantidad>=$request->cantidad && $request->origenRepuesto != "Cliente") {
             $repuestosutilizado = new Repuestosutilizado();
 
+            $now = date("Y-m-d");
 
-            $repuestosutilizado->fechaUso = date('d/m/Y');
+            $repuestosutilizado->fechaUso = $now;
 
 
             $repuestosutilizado->cantidad = $request->cantidad;
@@ -73,15 +74,15 @@ class RepuestosutilizadoController extends Controller
             $repuestosutilizado->descripcion = $request->descripcion;
 
 
-            if($request->precioUnitario != null)
+            if($request->precioUnitario != null && $request->precioUnitario != 0)
             {
                 $repuestosutilizado->precioUnitario = $request->precioUnitario;
                 $repuestosutilizado->precioTotal = $request->precioUnitario*$request->cantidad;
             }
             else
             {
-                $repuestosutilizado->precioUnitario = $repuesto->precioUnitario;
-                $repuestosutilizado->precioTotal = $repuesto->precioUnitario*$request->cantidad;
+                $repuestosutilizado->precioUnitario = $repuesto->precioVenta;
+                $repuestosutilizado->precioTotal = $repuesto->precioVenta*$request->cantidad;
             }
 
             $repuestosutilizado->trabajomoto_id = $request->trabajomoto_id;
@@ -222,7 +223,7 @@ class RepuestosutilizadoController extends Controller
      */
     public function DeleteMsg($id,Request $request)
     {
-        $msg = Ajaxis::BtDeleting('Warning!!','Would you like to remove This?','/repuestosutilizado/'. $id . '/delete/');
+        $msg = Ajaxis::BtDeleting('Advertencia!!','¿Esta seguro de Eliminar este Registro?','/repuestosutilizado/'. $id . '/delete/');
 
         if($request->ajax())
         {

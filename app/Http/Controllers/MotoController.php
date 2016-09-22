@@ -110,15 +110,50 @@ class MotoController extends Controller
      */
     public function showMotos(Request $request)
     {
-        $id=$request->persona_id;
 
-        $motos = Moto::where('persona_id',$id)->get()->lists('noChasis','id');
+        if(strpos($request->origenPersona ,'N')!==false)
+        {
+            $persona = new Persona();
 
 
-        $users = User::all()->lists('name','id');
-        $personas = Persona::all()->lists('nombreCompleto','id');
+            $persona->nombreCompleto = $request->nombreCompleto;
 
-        return view('moto.showMotos',compact('motos', 'personas','id' ));
+
+            $persona->nitCI = $request->nitCI;
+
+
+            $persona->direccion = $request->direccion;
+
+
+            $persona->Telefono = $request->Telefono;
+
+
+            $persona->Celular = $request->Celular;
+
+            $persona->save();
+
+            $id=$persona->id;
+            
+            $motos = Moto::where('persona_id',$id)->get()->lists('marca','id');
+
+
+            $users = User::all()->lists('name','id');
+            $personas = Persona::all()->lists('nombreCompleto','id');
+
+            return view('moto.showMotos',compact('motos', 'personas','id' ));
+        }
+        else
+        {
+            $id=$request->persona_id;
+            $motos = Moto::where('persona_id',$id)->get()->lists('marca','id');
+            
+            $users = User::all()->lists('name','id');
+            $personas = Persona::all()->lists('nombreCompleto','id');
+
+            return view('moto.showMotos',compact('motos', 'personas','id' ));
+        }
+
+
     }
 
     /**
@@ -183,7 +218,7 @@ class MotoController extends Controller
      */
     public function DeleteMsg($id,Request $request)
     {
-        $msg = Ajaxis::BtDeleting('Warning!!','Would you like to remove This?','/moto/'. $id . '/delete/');
+        $msg = Ajaxis::BtDeleting('Advertencia!!','¿Esta seguro de Eliminar este Registro?','/moto/'. $id . '/delete/');
 
         if($request->ajax())
         {

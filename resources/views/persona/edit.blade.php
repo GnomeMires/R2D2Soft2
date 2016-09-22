@@ -2,16 +2,16 @@
 
 @section('content')
         <div class = 'container'>
-            <h1>Editar Persona</h1>
+            <h1>Editar Cliente</h1>
             <form method = 'get' action = '{{url("persona")}}'>
-                <button class = 'btn btn-danger'>Lista de Personas</button>
+                <button class = 'btn btn-danger'>Atras</button>
             </form>
             <br>
             <form method = 'POST' action = '{{url("persona")}}/{{$persona->id}}/update'>
                 <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
                 
                 <div class="form-group">
-                    <label for="nombreCompleto">Combre Completo</label>
+                    <label for="nombreCompleto">Nombre Completo</label>
                     <input id="nombreCompleto" name = "nombreCompleto" type="text" class="form-control" value="{{$persona->nombreCompleto}}">
                 </div>
                 

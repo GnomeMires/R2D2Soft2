@@ -53,11 +53,11 @@
                         <td>
                                 <a data-toggle="modal" data-target="#myModal" class = 'delete btn btn-danger btn-xs' data-link = "/moto/{{$Moto->id}}/deleteMsg" ><i class = 'material-icons'>delete</i></a>
                                 <a href = '#' class = 'viewEdit btn btn-primary btn-xs' data-link = '/moto/{{$Moto->id}}/edit'><i class = 'material-icons'>edit</i></a>
-                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/moto/{{$Moto->id}}'><i class = 'material-icons'>info</i></a>
+                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/moto/{{$Moto->id}}'><i class = 'material-icons'>zoom_in</i></a>
                         </td>
                         <td>
-                            <a href = '#' class = 'viewEdit btn btn-primary btn-xs' data-link = '/moto/{{$Moto->id}}/edit'><i class = 'material-icons'>add_a_photo</i></a>
-                            <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/moto/{{$Moto->id}}'><i class = 'material-icons'>collections</i></a>
+                            <a href = '#' class = 'viewEdit btn btn-primary btn-xs' data-link = '/fotosmoto/{{$Moto->id}}/create'><i class = 'material-icons'>add_a_photo</i></a>
+                            <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/fotosmoto/{{$Moto->id}}/showFotos'><i class = 'material-icons'>collections</i></a>
                         </td>
                     </tr>
                     @endforeach

@@ -5,48 +5,48 @@
             <h1>Show Proovedor</h1>
             <br>
             <form method = 'get' action = '{{url("proovedor")}}'>
-                <button class = 'btn btn-primary'>Proovedor Index</button>
+                <button class = 'btn btn-primary'>Atras</button>
             </form>
             <br>
             <table class = 'table table-bordered'>
                 <thead>
-                    <th>Key</th>
-                    <th>Value</th>
+                    <th>Campo</th>
+                    <th>Valor</th>
                 </thead>
                 <tbody>
 
                     
                     <tr>
                         <td>
-                            <b><i>nombreProovedor : </i></b>
+                            <b><i>Nombre Proovedor : </i></b>
                         </td>
                         <td>{{$proovedor->nombreProovedor}}</td>
                     </tr>
                     
                     <tr>
                         <td>
-                            <b><i>direccion : </i></b>
+                            <b><i>Direccion : </i></b>
                         </td>
                         <td>{{$proovedor->direccion}}</td>
                     </tr>
                     
                     <tr>
                         <td>
-                            <b><i>ubicacion : </i></b>
+                            <b><i>Ubicacion : </i></b>
                         </td>
                         <td>{{$proovedor->ubicacion}}</td>
                     </tr>
                     
                     <tr>
                         <td>
-                            <b><i>telefono : </i></b>
+                            <b><i>Telefono : </i></b>
                         </td>
                         <td>{{$proovedor->telefono}}</td>
                     </tr>
                     
                     <tr>
                         <td>
-                            <b><i>correo : </i></b>
+                            <b><i>Correo : </i></b>
                         </td>
                         <td>{{$proovedor->correo}}</td>
                     </tr>

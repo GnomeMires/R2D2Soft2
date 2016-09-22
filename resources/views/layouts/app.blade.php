@@ -50,10 +50,10 @@
                <!-- <li class="active"><a href="{{ url('/') }}">
                         Laravel
                     </a></li>-->
-                <li><a href="{{ url('/home') }}">Home</a></li>
+                <li><a href="{{ url('/home') }}">Inicio</a></li>
                 @if (Auth::guest())
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
+                    <li><a href="{{ url('/login') }}">Ingresar</a></li>
+                    <li><a href="{{ url('/register') }}">Registrarse</a></li>
                 @else
                     <li><a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             {{ Auth::user()->name }} <span class="caret"></span>
@@ -63,16 +63,15 @@
                         <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Desconectar</a></li>
                     </ul>
                     </li>
-                    <li><a href="{{ url('/persona') }}"><i class="fa fa-btn fa-users"></i>Personas</a></li>
+                    <li><a href="{{ url('/persona') }}"><i class="fa fa-btn fa-users"></i>Clientes</a></li>
                     <li><a href="{{ url('/datosempresa') }}"><i class="fa fa-btn fa-briefcase"></i>Taller</a></li>
                        <li><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-btn fa-motorcycle"></span>Motos
                                <span class="caret"></span></a>
                                <ul class="dropdown-menu">
                                    <li><a href="{{ url('/moto') }}">Motos</a></li>
-                                   <li><a href="{{ url('/fotosmoto') }}">Fotos Motos</a></li>
                                    <li><a href="{{url("trabajomoto")}}/create">Nuevo Trabajo</a></li>
                                    <li><a href="{{ url('/trabajomoto') }}">Trabajos</a></li>
-                                   <li><a href="{{ url('/informecontrato') }}">Informe</a></li>
+                                   <li><a href="{{ url('/informecontrato') }}">Informes</a></li>
                                </ul>
                        </li>
                        <li><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-btn fa-wrench"></span>Repuestos

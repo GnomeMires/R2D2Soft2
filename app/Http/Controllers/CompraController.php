@@ -70,7 +70,7 @@ class CompraController extends Controller
         $compra->tipoCompra = $request->tipoCompra;
 
         
-        $compra->costoTotal = $request->costoTotal;
+        $compra->costoTotal = $request->costoUnitario*$request->cantidad;
 
         
         $compra->costoUnitario = $request->costoUnitario;
@@ -192,7 +192,7 @@ class CompraController extends Controller
      */
     public function DeleteMsg($id,Request $request)
     {
-        $msg = Ajaxis::BtDeleting('Warning!!','Would you like to remove This?','/compra/'. $id . '/delete/');
+        $msg = Ajaxis::BtDeleting('Advertencia!!','¿Esta seguro de Eliminar este Registro?','/compra/'. $id . '/delete/');
 
         if($request->ajax())
         {

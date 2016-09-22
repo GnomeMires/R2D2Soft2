@@ -2,8 +2,7 @@
 
 @section('content')
     <div class = 'container'>
-        <h1 align="right">RECIBO</h1>
-        <br>
+        <h3 align="right"><strong>N&deg; RECIBO {{$trabajomoto->id}}</strong></h3>
         <table style="width: 100%;border-collapse: separate;
     border-spacing: 10px;">
             <tr>
@@ -74,7 +73,7 @@
                 </table>
             </tr>
         </table>
-        <h1>DETALLE DEL TRABAJO</h1>
+        <h3>DETALLE DEL TRABAJO</h3>
 
         <table class = "table table-striped table-bordered">
             <thead>
@@ -82,8 +81,6 @@
             <th>Descripcion</th>
 
             <th>Precio Bs.</th>
-
-            <th>Acciones</th>
             </thead>
             <tbody>
             <?php $totalDT = 0;?>
@@ -101,8 +98,7 @@
             </tr>
             </tbody>
         </table>
-        <br>
-        <H1>REPUESTOS UTILIZADOS</H1>
+        <H3>REPUESTOS UTILIZADOS</H3>
 
         <table class = "table table-striped table-bordered">
             <thead>
@@ -114,8 +110,6 @@
             <th>Precio U.</th>
 
             <th>Precio T.</th>
-
-            <th>actions</th>
             </thead>
             <tbody>
             <?php $totalRU = 0;?>
@@ -131,29 +125,36 @@
                     <td>{{$RepuestosUtilizado->cantidad * $RepuestosUtilizado->repuestosmoto->precioVenta}}<?php $totalRU+=$RepuestosUtilizado->cantidad * $RepuestosUtilizado->repuestosmoto->precioVenta;?></td>
 
                 </tr>
-                <tr>
-                    <td colspan="3"><strong>TOTAL Bs.</strong></td>
-                    <td>{{$totalRU}}</td>
-                </tr>
+
             @endforeach
+            <tr>
+                <td colspan="3"><strong>TOTAL Bs.</strong></td>
+                <td>{{$totalRU}}</td>
+            </tr>
             </tbody>
         </table>
 
             <table width="100%">
                 <tr>
                     <td align="right">
-                        <atrong>Total Bs.{{$totalRU+$totalDT}}</atrong>
+                        <h4><strong>Total Bs.{{$totalRU+$totalDT}}</strong></h4>
                     </td>
                 </tr>
                 <tr>
                     <td align="right">
-                        <atrong>Adelantado {{$adelantado}}</atrong>
+                        <h4><strong>Adelantado Bs. {{$adelantado}}</strong></h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        @if($adelantado>($totalRU+$totalDT))
+                            <h4> <strong>Cambio Bs. {{$adelantado-$totalRU-$totalDT}}</strong></h4>
+                        @else
+                            <h4><strong>Restante Bs. {{$totalRU+$totalDT-$adelantado}}</strong></h4>
+                        @endif
                     </td>
                 </tr>
             </table>
-            <br><br>
-            <div align="right">
-                <button class = 'btn btn-danger' type="submit" >Imprimir Recibo</button></div>
             <br><br>
     </div>
 @endsection

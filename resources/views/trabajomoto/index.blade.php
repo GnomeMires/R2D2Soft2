@@ -17,14 +17,12 @@
                     
                     <th>Costo Bs.</th>
                     
-                    <th>Estado</th>
+                    <th>Term</th>
                     
                     <th>No. Placa</th>
                     
                     <th>Encargado</th>
-                    
 
-                    
                     <th>Acciones</th>
                     <th>Informe Rec.</th>
                     <th>Proforma</th>
@@ -40,7 +38,12 @@
                         
                         <td>{{$Trabajomoto->costoTotal}}</td>
                         
-                        <td>{{$Trabajomoto->estado}}</td>
+                        <td>@if ($Trabajomoto->estado == 1)
+                                <a href = '#' class = 'viewShow btn btn-success btn-xs' data-link = '/trabajomoto/{{$Trabajomoto->id}}/updateEstado'><i class = 'material-icons'>assignment_turned_in</i>Si</a>
+                            @else
+                                <a href = '#' class = 'viewShow btn btn-danger btn-xs' data-link = '/trabajomoto/{{$Trabajomoto->id}}/updateEstado'><i class = 'material-icons'>assignment_late</i>No</a>
+                            @endif
+                        </td>
 
                                                 <td>{{$Trabajomoto->placaControl}}</td>
 
@@ -52,29 +55,31 @@
                         <td>
                                 <a data-toggle="modal" data-target="#myModal" class = 'delete btn btn-danger btn-xs' data-link = "/trabajomoto/{{$Trabajomoto->id}}/deleteMsg" ><i class = 'material-icons'>delete</i></a>
                                 <a href = '#' class = 'viewEdit btn btn-primary btn-xs' data-link = '/trabajomoto/{{$Trabajomoto->id}}/edit'><i class = 'material-icons'>edit</i></a>
-                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/trabajomoto/{{$Trabajomoto->id}}/show'><i class = 'material-icons'>info</i></a>
+                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/trabajomoto/{{$Trabajomoto->id}}/show'><i class = 'material-icons'>zoom_in</i></a>
+                                @if($Trabajomoto->costoTotal>-0)
+                                    <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/trabajomoto/{{$Trabajomoto->id}}/mostrarRecibo'><i class = 'material-icons'>receipt</i></a>
+                                @endif
                         </td>
                         <td>
                             @if (count($Trabajomoto->contratoID) >= 1)
-                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/informecontrato/{{$Trabajomoto->contratoID}}'><i class = 'material-icons'>info</i></a>
+                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/informecontrato/{{$Trabajomoto->contratoID}}'><i class = 'material-icons'>zoom_in</i></a>
                             @else
-                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/informecontrato/{{$Trabajomoto->id}}/create'><i class = 'material-icons'>note_add</i></a>
+                                <a href = '#' class = 'viewShow btn btn-success btn-xs' data-link = '/informecontrato/{{$Trabajomoto->id}}/create'><i class = 'material-icons'>note_add</i></a>
                             @endif
                         </td>
                         <td>
                             @if (count($Trabajomoto->contratoID) >= 1)
-                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/informecontrato/{{$Trabajomoto->contratoID}}/showProforma'><i class = 'material-icons'>info</i></a>
+                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/informecontrato/{{$Trabajomoto->contratoID}}/showProforma'><i class = 'material-icons'>zoom_in</i></a>
                             @else
-                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/informecontrato/{{$Trabajomoto->id}}/create'><i class = 'material-icons'>note_add</i></a>
+                                <a href = '#' class = 'viewShow btn btn-success btn-xs' data-link = '/informecontrato/{{$Trabajomoto->id}}/create'><i class = 'material-icons'>note_add</i></a>
                             @endif
 
                         </td>
                         <td>
                             @if (count($Trabajomoto->entregaID) >= 1)
-                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/informeentrega/{{$Trabajomoto->entregaID}}'><i class = 'material-icons'>info</i></a>
-                                <a href = '{{url("informeentrega")}}/{{$Trabajomoto->entregaID}}/show' class = 'btn btn-primary'>Realizar Informe</a>
+                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/informeentrega/{{$Trabajomoto->entregaID}}'><i class = 'material-icons'>zoom_in</i></a>
                             @else
-                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/informeentrega/{{$Trabajomoto->id}}/create'><i class = 'material-icons'>note_add</i></a>
+                                <a href = '#' class = 'viewShow btn btn-success btn-xs' data-link = '/informeentrega/{{$Trabajomoto->id}}/create'><i class = 'material-icons'>note_add</i></a>
                             @endif
                         </td>
                     </tr>

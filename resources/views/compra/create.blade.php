@@ -9,9 +9,18 @@
             <br>
             <form method = 'POST' action = '{{url("compra")}}'>
                 <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
-                
+
                 <div class="form-group">
-                    <label for="cantidad">Cantidad</label>
+                    <label>Respuesto*</label>
+                    <select name = 'repuestosmoto_id' class = 'form-control'>
+                        @foreach($repuestosmotos as $key => $value)
+                            <option value="{{$key}}">{{$value}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cantidad">Cantidad*</label>
                     <input id="cantidad" name = "cantidad" type="text" class="form-control">
                 </div>
                 
@@ -21,17 +30,12 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="costoTotal">Total (Bs.)</label>
-                    <input id="costoTotal" name = "costoTotal" type="text" class="form-control">
-                </div>
-                
-                <div class="form-group">
-                    <label for="costoUnitario">Unitario (Bs.)</label>
+                    <label for="costoUnitario">Unitario (Bs.)*</label>
                     <input id="costoUnitario" name = "costoUnitario" type="text" class="form-control">
                 </div>
                 
                 <div class="form-group">
-                    <label for="fechaCompra">Fecha</label>
+                    <label for="fechaCompra">Fecha*</label>
                     <input id="fechaCompra" name = "fechaCompra" type="text" class="form-control">
                 </div>
                 
@@ -42,25 +46,12 @@
                 
                 
                 <div class="form-group">
-                    <label>Empresa</label>
-                    <select name = 'datosempresa_id' class = 'form-control'>
-                        @foreach($datosempresas as $key => $value)
-                        <option value="{{$key}}">{{$value}}</option>
-                        @endforeach
-                    </select>
+                    <input type="hidden" name = 'datosempresa_id' class = 'form-control' value="1">
                 </div>
+
                 
                 <div class="form-group">
-                    <label>Respuesto</label>
-                    <select name = 'repuestosmoto_id' class = 'form-control'>
-                        @foreach($repuestosmotos as $key => $value)
-                        <option value="{{$key}}">{{$value}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label>Proovedor</label>
+                    <label>Proovedor*</label>
                     <select name = 'proovedor_id' class = 'form-control'>
                         @foreach($proovedors as $key => $value)
                         <option value="{{$key}}">{{$value}}</option>

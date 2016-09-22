@@ -2,51 +2,51 @@
 
 @section('content')
         <div class = 'container'>
-            <h1>Show Compra</h1>
+            <h1>Mostrar Compra</h1>
             <br>
             <form method = 'get' action = '{{url("compra")}}'>
-                <button class = 'btn btn-primary'>Compra Index</button>
+                <button class = 'btn btn-primary'>Atras</button>
             </form>
             <br>
             <table class = 'table table-bordered'>
                 <thead>
-                    <th>Key</th>
-                    <th>Value</th>
+                    <th>Campo</th>
+                    <th>Valor</th>
                 </thead>
                 <tbody>
 
                     
                     <tr>
                         <td>
-                            <b><i>cantidad : </i></b>
+                            <b><i>Cantidad : </i></b>
                         </td>
                         <td>{{$compra->cantidad}}</td>
                     </tr>
                     
                     <tr>
                         <td>
-                            <b><i>tipoCompra : </i></b>
+                            <b><i>Tipo Compra : </i></b>
                         </td>
                         <td>{{$compra->tipoCompra}}</td>
                     </tr>
                     
                     <tr>
                         <td>
-                            <b><i>costoTotal : </i></b>
+                            <b><i>Costo Total : </i></b>
                         </td>
                         <td>{{$compra->costoTotal}}</td>
                     </tr>
                     
                     <tr>
                         <td>
-                            <b><i>costoUnitario : </i></b>
+                            <b><i>Costo Unitario : </i></b>
                         </td>
                         <td>{{$compra->costoUnitario}}</td>
                     </tr>
                     
                     <tr>
                         <td>
-                            <b><i>fechaCompra : </i></b>
+                            <b><i>Fecha Compra : </i></b>
                         </td>
                         <td>{{$compra->fechaCompra}}</td>
                     </tr>
@@ -57,112 +57,29 @@
                         </td>
                         <td>{{$compra->Observaciones}}</td>
                     </tr>
-                    
 
-                                                
                         
                         <tr>
                         <td>
-                            <b><i>nombreEmpresa : </i><b>
-                        </td>
-                        <td>{{$compra->datosempresa->nombreEmpresa}}</td>
-                        </tr>
-                        
-                        <tr>
-                        <td>
-                            <b><i>nit : </i><b>
-                        </td>
-                        <td>{{$compra->datosempresa->nit}}</td>
-                        </tr>
-                        
-                        <tr>
-                        <td>
-                            <b><i>direccion : </i><b>
-                        </td>
-                        <td>{{$compra->datosempresa->direccion}}</td>
-                        </tr>
-                        
-                        <tr>
-                        <td>
-                            <b><i>telefono : </i><b>
-                        </td>
-                        <td>{{$compra->datosempresa->telefono}}</td>
-                        </tr>
-                        
-                        <tr>
-                        <td>
-                            <b><i>celular : </i><b>
-                        </td>
-                        <td>{{$compra->datosempresa->celular}}</td>
-                        </tr>
-                        
-                        
-                        
-                        <tr>
-                        <td>
-                            <b><i>nombreRepuesto : </i><b>
+                            <b><i>Nombre Repuesto : </i></b>
                         </td>
                         <td>{{$compra->repuestosmoto->nombreRepuesto}}</td>
                         </tr>
                         
                         <tr>
                         <td>
-                            <b><i>codigoRepuesto : </i><b>
+                            <b><i>Codigo Repuesto : </i></b>
                         </td>
                         <td>{{$compra->repuestosmoto->codigoRepuesto}}</td>
                         </tr>
+
                         
                         <tr>
                         <td>
-                            <b><i>tipoRepuesto : </i><b>
-                        </td>
-                        <td>{{$compra->repuestosmoto->tipoRepuesto}}</td>
-                        </tr>
-                        
-                        <tr>
-                        <td>
-                            <b><i>precioVenta : </i><b>
-                        </td>
-                        <td>{{$compra->repuestosmoto->precioVenta}}</td>
-                        </tr>
-                        
-                        
-                        
-                        <tr>
-                        <td>
-                            <b><i>nombreProovedor : </i><b>
+                            <b><i>Nombre Proovedor : </i></b>
                         </td>
                         <td>{{$compra->proovedor->nombreProovedor}}</td>
                         </tr>
-                        
-                        <tr>
-                        <td>
-                            <b><i>direccion : </i><b>
-                        </td>
-                        <td>{{$compra->proovedor->direccion}}</td>
-                        </tr>
-                        
-                        <tr>
-                        <td>
-                            <b><i>ubicacion : </i><b>
-                        </td>
-                        <td>{{$compra->proovedor->ubicacion}}</td>
-                        </tr>
-                        
-                        <tr>
-                        <td>
-                            <b><i>telefono : </i><b>
-                        </td>
-                        <td>{{$compra->proovedor->telefono}}</td>
-                        </tr>
-                        
-                        <tr>
-                        <td>
-                            <b><i>correo : </i><b>
-                        </td>
-                        <td>{{$compra->proovedor->correo}}</td>
-                        </tr>
-                        
                         
                         
                 </tbody>

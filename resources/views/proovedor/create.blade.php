@@ -2,41 +2,41 @@
 
 @section('content')
         <div class = 'container'>
-            <h1>Create Proovedor</h1>
+            <h1>Crear Proovedor</h1>
             <form method = 'get' action = '{{url("proovedor")}}'>
-                <button class = 'btn btn-danger'>Proovedor Index</button>
+                <button class = 'btn btn-danger'>Atras</button>
             </form>
             <br>
             <form method = 'POST' action = '{{url("proovedor")}}'>
                 <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
                 
                 <div class="form-group">
-                    <label for="nombreProovedor">nombreProovedor</label>
+                    <label for="nombreProovedor">Nombre Proovedor</label>
                     <input id="nombreProovedor" name = "nombreProovedor" type="text" class="form-control">
                 </div>
                 
                 <div class="form-group">
-                    <label for="direccion">direccion</label>
+                    <label for="direccion">Direccion</label>
                     <input id="direccion" name = "direccion" type="text" class="form-control">
                 </div>
                 
                 <div class="form-group">
-                    <label for="ubicacion">ubicacion</label>
+                    <label for="ubicacion">Ubicacion</label>
                     <input id="ubicacion" name = "ubicacion" type="text" class="form-control">
                 </div>
                 
                 <div class="form-group">
-                    <label for="telefono">telefono</label>
+                    <label for="telefono">Telefono</label>
                     <input id="telefono" name = "telefono" type="text" class="form-control">
                 </div>
                 
                 <div class="form-group">
-                    <label for="correo">correo</label>
+                    <label for="correo">Correo</label>
                     <input id="correo" name = "correo" type="text" class="form-control">
                 </div>
                 
                 
-                <button class = 'btn btn-primary' type ='submit'>Create</button>
+                <button class = 'btn btn-primary' type ='submit'>Crear</button>
             </form>
         </div>
 @endsection

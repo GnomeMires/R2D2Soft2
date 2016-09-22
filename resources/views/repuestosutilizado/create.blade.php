@@ -2,7 +2,7 @@
 
 @section('content')
         <div class = 'container'>
-            <h1>Create Repuestosutilizado</h1>
+            <h1>Agregar Repuesto al Trabajo</h1>
             <form method = 'get' action = '{{url("trabajomoto")}}/{{$id}}/show'>
                 <button class = 'btn btn-danger'>Atras</button>
             </form>
@@ -11,7 +11,7 @@
                 <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
 
                 <div class="form-group">
-                    <label>repuestosmotos Select</label>
+                    <label>Selecciona un Repuesto</label>
                     <select name = 'repuestosmoto_id' class = 'form-control'>
                         @foreach($repuestosmotos as $key => $value)
                             <option value="{{$key}}">{{$value}}</option>

@@ -35,14 +35,26 @@ class FotosmotoController extends Controller
      *
      * @return  \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id, Request $request)
     {
+        if($request->ajax())
+        {
+            return URL::to('fotosmoto/'. $id . '/create');
+        }
         
-        $motos = Moto::all()->lists('placaControl','id');
-        
-        return view('fotosmoto.create',compact('motos'  ));
+        return view('fotosmoto.create',compact('motos','id'));
     }
 
+    public function showFotos($id,Request $request)
+    {
+        if($request->ajax())
+        {
+            return URL::to('fotosmoto/'.$id.'/showFotos');
+        }
+        $fotosmotos = Fotosmoto::where('moto_id',$id)->get();
+
+        return view('fotosmoto.index',compact('fotosmotos','id'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -73,7 +85,11 @@ class FotosmotoController extends Controller
         $fotosmoto->direccionFoto = $imgName;
         $fotosmoto->save();
 
-        return redirect('fotosmoto');
+        $id = $fotosmoto->moto_id;
+        
+        $fotosmotos = Fotosmoto::where('moto_id',$id)->get();
+
+        return view('fotosmoto.index',compact('fotosmotos','id'));
     }
 
     /**
@@ -150,7 +166,7 @@ class FotosmotoController extends Controller
      */
     public function DeleteMsg($id,Request $request)
     {
-        $msg = Ajaxis::BtDeleting('Warning!!','Would you like to remove This?','/fotosmoto/'. $id . '/delete/');
+        $msg = Ajaxis::BtDeleting('Advertencia!!','¿Esta seguro de Eliminar este Registro?','/fotosmoto/'. $id . '/delete/');
 
         if($request->ajax())
         {

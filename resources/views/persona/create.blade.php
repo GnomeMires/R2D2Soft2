@@ -2,26 +2,26 @@
 
 @section('content')
     <div class = 'container'>
-            <h1>Create Persona</h1>
+            <h1>Crear Nuevo Cliente</h1>
             <form method = 'get' action = '{{url("persona")}}'>
-                <button class = 'btn btn-danger'>Persona Index</button>
+                <button class = 'btn btn-danger'>Atras</button>
             </form>
             <br>
             <form method = 'POST' action = '{{url("persona")}}'>
                 <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
                 
                 <div class="form-group">
-                    <label for="nombreCompleto">nombreCompleto</label>
+                    <label for="nombreCompleto">Nombre Completo *</label>
                     <input id="nombreCompleto" name = "nombreCompleto" type="text" class="form-control">
                 </div>
                 
                 <div class="form-group">
-                    <label for="nitCI">nitCI</label>
+                    <label for="nitCI">NIT/CI*</label>
                     <input id="nitCI" name = "nitCI" type="text" class="form-control">
                 </div>
                 
                 <div class="form-group">
-                    <label for="direccion">direccion</label>
+                    <label for="direccion">Direccion</label>
                     <input id="direccion" name = "direccion" type="text" class="form-control">
                 </div>
                 
@@ -36,7 +36,7 @@
                 </div>
                 
                 
-                <button class = 'btn btn-primary' type ='submit'>Create</button>
+                <button class = 'btn btn-primary' type ='submit'>Crear</button>
             </form>
         </div>
 @endsection

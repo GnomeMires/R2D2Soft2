@@ -4,6 +4,8 @@ namespace R2D2Soft\Http\Controllers;
 
 use R2D2Soft\Http\Requests;
 use Illuminate\Http\Request;
+use R2D2Soft\Trabajomoto;
+use DB;
 
 class HomeController extends Controller
 {
@@ -24,6 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $now = date("Y-m-d",strtotime("-3 day"));
+
+        $trabajomotos = DB::table('trabajomotos')
+            ->join('motos','trabajomotos.moto_id','=','motos.id')
+            ->whereDate('fechaEntrega','<=',$now)
+            ->where('estado','=',0)
+            ->get();
+        return view('home', compact('trabajomotos','now'));
     }
 }

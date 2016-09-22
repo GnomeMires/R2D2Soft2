@@ -4,7 +4,7 @@
         <div class = 'container'>
             <h1>Proovedor Index</h1>
             <form class = 'col s3' method = 'get' action = '{{url("proovedor")}}/create'>
-                <button class = 'btn btn-primary' type = 'submit'>Create New Proovedor</button>
+                <button class = 'btn btn-primary' type = 'submit'>Crear Nuevo Proovedor</button>
             </form>
             <br>
             
@@ -12,18 +12,18 @@
             <table id="pagination" class = "table table-striped table-bordered">
                 <thead>
                     
-                    <th>nombreProovedor</th>
+                    <th>Nombre</th>
                     
-                    <th>direccion</th>
+                    <th>Direccion</th>
                     
-                    <th>ubicacion</th>
+                    <th>Ubicacion</th>
                     
-                    <th>telefono</th>
+                    <th>Telefono</th>
                     
-                    <th>correo</th>
+                    <th>Correo</th>
                     
                     
-                    <th>actions</th>
+                    <th>Acciones</th>
                 </thead>
                 <tbody>
                     @foreach($proovedors as $Proovedor)
@@ -43,7 +43,7 @@
                         <td>
                                 <a data-toggle="modal" data-target="#myModal" class = 'delete btn btn-danger btn-xs' data-link = "/proovedor/{{$Proovedor->id}}/deleteMsg" ><i class = 'material-icons'>delete</i></a>
                                 <a href = '#' class = 'viewEdit btn btn-primary btn-xs' data-link = '/proovedor/{{$Proovedor->id}}/edit'><i class = 'material-icons'>edit</i></a>
-                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/proovedor/{{$Proovedor->id}}'><i class = 'material-icons'>info</i></a>
+                                <a href = '#' class = 'viewShow btn btn-warning btn-xs' data-link = '/proovedor/{{$Proovedor->id}}'><i class = 'material-icons'>zoom_in</i></a>
                         </td>
                     </tr>
                     @endforeach

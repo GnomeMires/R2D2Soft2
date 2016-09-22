@@ -77,18 +77,51 @@ class TrabajomotoController extends Controller
         $trabajomoto->fechaEntrega = $request->fechaEntrega;
 
         
-        $trabajomoto->costoTotal = $request->costoTotal;
+        $trabajomoto->costoTotal = -1;
 
         
-        $trabajomoto->estado = $request->estado;
+        $trabajomoto->estado = "No Terminado";
 
         
         $trabajomoto->descripcion = $request->descripcion;
 
         
-        
-        $trabajomoto->moto_id = $request->moto_id;
+        if($request->origenMoto == 'N')
+        {
+            $moto = new Moto();
 
+
+            $moto->noChasis = $request->noChasis;
+
+
+            $moto->noMotor = $request->noMotor;
+
+
+            $moto->placaControl = $request->placaControl;
+
+
+            $moto->color = $request->color;
+
+
+            $moto->marca = $request->marca;
+
+
+            $moto->detalles = $request->detalles;
+
+
+
+            $moto->persona_id = $request->person_id;
+
+
+            $moto->save();
+
+
+            $trabajomoto->moto_id = $moto->id;
+        }
+        else
+        {
+            $trabajomoto->moto_id = $request->moto_id;
+        }
         
         $trabajomoto->user_id = $request->user_id;
 
@@ -102,7 +135,41 @@ class TrabajomotoController extends Controller
 
         return view('trabajomoto.listDetallesTrabajo',compact('trabajomoto','taller','repuestosUtilizados','detalletrabajos'));
     }
+    /**
+     * Display the specified resource.
+     *
+     * @param        \Illuminate\Http\Request  $request
+     * @param    int  $id
+     * @return  \Illuminate\Http\Response
+     */
+    public function updateEstado($id ,Request $request)
+    {
+        if($request->ajax())
+        {
+            return URL::to('trabajomoto/'. $id . '/updateEstado');
+        }
+        $trabajomoto = Trabajomoto::findOrfail($id);
+        if($trabajomoto->estado==1)
+        {
+            $trabajomoto->estado=0;
+            $trabajomoto->save();
+        }
+        else
+        {
+            $trabajomoto->estado=1;
+            $trabajomoto->save();
+        }
 
+        $trabajomotos = DB::table('trabajomotos')
+            ->join('motos', 'motos.id', '=', 'trabajomotos.moto_id')
+            ->join('users', 'users.id', '=', 'trabajomotos.user_id')
+            ->leftJoin('informecontratos', 'trabajomotos.id', '=', 'informecontratos.trabajomoto_id')
+            ->leftJoin('informeentregas', 'trabajomotos.id', '=', 'informeentregas.trabajomoto_id')
+            ->select('trabajomotos.*', 'motos.placaControl as placaControl', 'users.name as name','informecontratos.id as contratoID', 'informeentregas.id as entregaID')
+            ->get();
+        
+        return view('trabajomoto.index',compact('trabajomotos'));
+    }
     /**
      * Display the specified resource.
      *
@@ -123,6 +190,49 @@ class TrabajomotoController extends Controller
         $detalletrabajos = Detalletrabajo::where('trabajomoto_id',$id)->get();
 
         return view('trabajomoto.listDetallesTrabajo',compact('trabajomoto','taller','repuestosUtilizados','detalletrabajos'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param        \Illuminate\Http\Request  $request
+     * @param    int  $id
+     * @return  \Illuminate\Http\Response
+     */
+    public function imprimirRecibo($id ,Request $request)
+    {
+        if($request->ajax())
+        {
+            return URL::to('trabajomoto/'. $id . '/imprimirRecibo');
+        }
+        $taller = Datosempresa::findOrfail(1);
+
+        $trabajomoto = Trabajomoto::findOrfail($id);
+
+        $trabajomoto->costoTotal=$request->adelantado;
+        $trabajomoto->save();
+        $repuestosUtilizados = Repuestosutilizado::where('trabajomoto_id',$id)->get();
+        $detalletrabajos = Detalletrabajo::where('trabajomoto_id',$id)->get();
+        $adelantado = $trabajomoto->costoTotal;
+
+        return view('trabajomoto.imprimirRecibo',compact('trabajomoto','taller','repuestosUtilizados','detalletrabajos','adelantado'));
+    }
+
+    public function mostrarRecibo($id ,Request $request)
+    {
+        if($request->ajax())
+        {
+            return URL::to('trabajomoto/'. $id . '/mostrarRecibo');
+        }
+        $taller = Datosempresa::findOrfail(1);
+
+        $trabajomoto = Trabajomoto::findOrfail($id);
+
+        $repuestosUtilizados = Repuestosutilizado::where('trabajomoto_id',$id)->get();
+        $detalletrabajos = Detalletrabajo::where('trabajomoto_id',$id)->get();
+        $adelantado = $trabajomoto->costoTotal;
+
+        return view('trabajomoto.imprimirRecibo',compact('trabajomoto','taller','repuestosUtilizados','detalletrabajos','adelantado'));
     }
 
     /**
@@ -164,9 +274,8 @@ class TrabajomotoController extends Controller
         
         $trabajomoto->fechaEntrega = $request->fechaEntrega;
         
-        $trabajomoto->costoTotal = $request->costoTotal;
-        
-        $trabajomoto->estado = $request->estado;
+        $trabajomoto->costoTotal = -1;
+
         
         $trabajomoto->descripcion = $request->descripcion;
         
@@ -191,7 +300,7 @@ class TrabajomotoController extends Controller
      */
     public function DeleteMsg($id,Request $request)
     {
-        $msg = Ajaxis::BtDeleting('Warning!!','Would you like to remove This?','/trabajomoto/'. $id . '/delete/');
+        $msg = Ajaxis::BtDeleting('Advertencia!!','¿Esta seguro de Eliminar este Registro?','/trabajomoto/'. $id . '/delete/');
 
         if($request->ajax())
         {

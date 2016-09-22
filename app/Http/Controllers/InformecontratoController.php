@@ -216,7 +216,7 @@ class InformecontratoController extends Controller
      */
     public function DeleteMsg($id,Request $request)
     {
-        $msg = Ajaxis::BtDeleting('Warning!!','Would you like to remove This?','/informecontrato/'. $id . '/delete/');
+        $msg = Ajaxis::BtDeleting('Advertencia!!','¿Esta seguro de Eliminar este Registro?','/informecontrato/'. $id . '/delete/');
 
         if($request->ajax())
         {

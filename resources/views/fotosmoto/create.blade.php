@@ -2,7 +2,7 @@
 
 @section('content')
         <div class = 'container'>
-            <h1>Create Fotosmoto</h1>
+            <h1>Agregar Foto</h1>
             <form method = 'get' action = '{!! URL::previous() !!}'>
                 <button class = 'btn btn-danger'>Atras</button>
             </form>
@@ -17,7 +17,7 @@
                 
                 <div class="form-group">
                     <label for="fechaFoto">Fecha </label>
-                    <input id="fechaFoto" name = "fechaFoto" type="text" class="form-control">
+                    <input id="fechaFoto" name = "fechaFoto" type="date" class="form-control">
                 </div>
                 
                 <div class="form-group">
@@ -28,15 +28,10 @@
                 
                 
                 <div class="form-group">
-                    <label>motos Select</label>
-                    <select name = 'moto_id' class = 'form-control'>
-                        @foreach($motos as $key => $value)
-                        <option value="{{$key}}">{{$value}}</option>
-                        @endforeach
-                    </select>
+                    <input type="hidden" name = 'moto_id' class = 'form-control' value="{{$id}}">
                 </div>
                 
-                <button class = 'btn btn-primary' type ='submit'>Create</button>
+                <button class = 'btn btn-primary' type ='submit'>Agregar Foto</button>
             </form>
         </div>
 @endsection

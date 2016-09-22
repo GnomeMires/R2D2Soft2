@@ -62,7 +62,10 @@ Route::get('moto/{id}/deleteMsg','\R2D2Soft\Http\Controllers\MotoController@Dele
 /********************* trabajomoto ***********************************************/
 Route::resource('trabajomoto','\R2D2Soft\Http\Controllers\TrabajomotoController');
 Route::post('trabajomoto/{id}/update','\R2D2Soft\Http\Controllers\TrabajomotoController@update');
+Route::post('trabajomoto/{id}/imprimirRecibo','\R2D2Soft\Http\Controllers\TrabajomotoController@imprimirRecibo');
+Route::get('trabajomoto/{id}/mostrarRecibo','\R2D2Soft\Http\Controllers\TrabajomotoController@mostrarRecibo');
 Route::get('trabajomoto/{id}/show','\R2D2Soft\Http\Controllers\TrabajomotoController@show');
+Route::get('trabajomoto/{id}/updateEstado','\R2D2Soft\Http\Controllers\TrabajomotoController@updateEstado');
 Route::get('trabajomoto/{id}/delete','\R2D2Soft\Http\Controllers\TrabajomotoController@destroy');
 Route::get('trabajomoto/{id}/deleteMsg','\R2D2Soft\Http\Controllers\TrabajomotoController@DeleteMsg');
 Route::post('moto/showMotos','\R2D2Soft\Http\Controllers\MotoController@showMotos');
@@ -72,6 +75,8 @@ Route::post('moto/showMotos','\R2D2Soft\Http\Controllers\MotoController@showMoto
 //fotosmoto Resources
 /********************* fotosmoto ***********************************************/
 Route::resource('fotosmoto','\R2D2Soft\Http\Controllers\FotosmotoController');
+Route::get('fotosmoto/{id}/create','\R2D2Soft\Http\Controllers\FotosmotoController@create');
+Route::get('fotosmoto/{id}/showFotos','\R2D2Soft\Http\Controllers\FotosmotoController@showFotos');
 Route::post('fotosmoto/{id}/update','\R2D2Soft\Http\Controllers\FotosmotoController@update');
 Route::get('fotosmoto/{id}/delete','\R2D2Soft\Http\Controllers\FotosmotoController@destroy');
 Route::get('fotosmoto/{id}/deleteMsg','\R2D2Soft\Http\Controllers\FotosmotoController@DeleteMsg');
