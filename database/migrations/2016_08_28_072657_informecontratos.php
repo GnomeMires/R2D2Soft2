@@ -23,9 +23,13 @@ class Informecontratos extends Migration
         $table->increments('id');
         
         $table->String('destinatario');
+
+        $table->String('destinatarioCargo');
         
         $table->String('via');
-        
+
+        $table->String('viaCargo');
+
         $table->String('referido');
         
         $table->date('fechaInforme');

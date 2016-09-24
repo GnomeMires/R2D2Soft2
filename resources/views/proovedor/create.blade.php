@@ -7,11 +7,20 @@
                 <button class = 'btn btn-danger'>Atras</button>
             </form>
             <br>
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form method = 'POST' action = '{{url("proovedor")}}'>
                 <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
                 
                 <div class="form-group">
-                    <label for="nombreProovedor">Nombre Proovedor</label>
+                    <label for="nombreProovedor">Nombre Proovedor*</label>
                     <input id="nombreProovedor" name = "nombreProovedor" type="text" class="form-control">
                 </div>
                 

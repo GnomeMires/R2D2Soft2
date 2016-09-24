@@ -13,6 +13,8 @@ use Amranidev\Ajaxis\Ajaxis;
 use URL;
 use DB;
 
+use Validator;
+
 use R2D2Soft\Moto;
 
 
@@ -68,6 +70,7 @@ class TrabajomotoController extends Controller
      */
     public function store(Request $request)
     {
+        
         $trabajomoto = new Trabajomoto();
 
         
@@ -89,7 +92,6 @@ class TrabajomotoController extends Controller
         if($request->origenMoto == 'N')
         {
             $moto = new Moto();
-
 
             $moto->noChasis = $request->noChasis;
 

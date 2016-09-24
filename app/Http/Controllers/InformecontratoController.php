@@ -57,14 +57,20 @@ class InformecontratoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombreRepuesto' => 'required|unique:repuestosMotos,nombreRepuesto',
+            'precioVenta' => 'required|numeric',
+        ]);
         $informecontrato = new Informecontrato();
 
         
-        $informecontrato->destinatario = $request->destinatario."<br><strong>".$request->cargoDestinatario."</strong>";
+        $informecontrato->destinatario = $request->destinatario;
 
+        $informecontrato->destinatarioCargo = $request->cargoDestinatario;
         
-        $informecontrato->via = $request->via."<br><strong>".$request->cargoVia."</strong>";
+        $informecontrato->via = $request->via;
 
+        $informecontrato->viaCargo = $request->cargoVia;
         
         $informecontrato->referido = $request->referido;
 
@@ -184,10 +190,14 @@ class InformecontratoController extends Controller
     public function update($id,Request $request)
     {
         $informecontrato = Informecontrato::findOrfail($id);
-    	
+
         $informecontrato->destinatario = $request->destinatario;
-        
+
+        $informecontrato->destinatarioCargo = $request->cargoDestinatario;
+
         $informecontrato->via = $request->via;
+
+        $informecontrato->viaCargo = $request->cargoVia;
         
         $informecontrato->referido = $request->referido;
         

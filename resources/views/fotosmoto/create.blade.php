@@ -7,9 +7,24 @@
                 <button class = 'btn btn-danger'>Atras</button>
             </form>
             <br>
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form method = 'POST' action = '{{url("fotosmoto")}}' enctype="multipart/form-data">
                 <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
-                
+
+                <div class="form-group">
+                    <label for="direccionFoto">Ubicar Foto*</label>
+                    <input id="direccionFoto" name = "direccionFoto" type="file" class="form-control" accept="image/*;capture:camera">
+
+                </div>
+
                 <div class="form-group">
                     <label for="descripcionEstado">Descripcion</label>
                     <input id="descripcionEstado" name = "descripcionEstado" type="text" class="form-control">
@@ -19,12 +34,7 @@
                     <label for="fechaFoto">Fecha </label>
                     <input id="fechaFoto" name = "fechaFoto" type="date" class="form-control">
                 </div>
-                
-                <div class="form-group">
-                    <label for="direccionFoto">Direccion Foto</label>
-                    <input id="direccionFoto" name = "direccionFoto" type="file" class="form-control" accept="image/*;capture:camera">
 
-                </div>
                 
                 
                 <div class="form-group">

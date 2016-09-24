@@ -7,11 +7,20 @@
                 <button class = 'btn btn-danger'>Atras</button>
             </form>
             <br>
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form method = 'POST' action = '{{url("repuestosutilizado")}}'>
                 <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
 
                 <div class="form-group">
-                    <label>Selecciona un Repuesto</label>
+                    <label>Selecciona un Repuesto*</label>
                     <select name = 'repuestosmoto_id' class = 'form-control'>
                         @foreach($repuestosmotos as $key => $value)
                             <option value="{{$key}}">{{$value}}</option>
@@ -21,13 +30,13 @@
 
 
                 <div class="form-group">
-                    <label for="cantidad">cantidad</label>
+                    <label for="cantidad">Cantidad*</label>
                     <input id="cantidad" name = "cantidad" type="text" class="form-control">
                 </div>
 
 
                 <div class="form-group">
-                    <label for="descripcion">Descripcion</label>
+                    <label for="descripcion">Descripcion*</label>
                     <input id="descripcion" name = "descripcion" type="text" class="form-control">
                 </div>
 

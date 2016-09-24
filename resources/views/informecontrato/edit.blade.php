@@ -7,6 +7,15 @@
                 <button class = 'btn btn-danger'>Informecontrato Index</button>
             </form>
             <br>
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form method = 'POST' action = '{{url("informecontrato")}}/{{$informecontrato->id}}/update'>
                 <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
                 <div class="form-group">
@@ -16,7 +25,7 @@
 
                 <div class="form-group">
                     <label for="cargoDestinatario">Cargo Destinatario</label>
-                    <input id="cargoDestinatario" name = "cargoDestinatario" type="text" class="form-control" value="{{$informecontrato->destinatario}}">
+                    <input id="cargoDestinatario" name = "cargoDestinatario" type="text" class="form-control" value="{{$informecontrato->destinatarioCargo}}">
                 </div>
 
                 <div class="form-group">
@@ -26,7 +35,7 @@
 
                 <div class="form-group">
                     <label for="cargoVia">Cargo Via</label>
-                    <input id="cargoVia" name = "cargoVia" type="text" class="form-control" value="{{$informecontrato->via}}">
+                    <input id="cargoVia" name = "cargoVia" type="text" class="form-control" value="{{$informecontrato->viaCargo}}">
                 </div>
 
                 <div class="form-group">

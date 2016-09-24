@@ -8,11 +8,11 @@
     <table style="width: 100%">
         <tr>
             <td style="width:10%" valign="top"><strong>A:</strong><br><br></td>
-            <td style="width: 90%">{!! $informecontrato->destinatario !!}<br><br></td>
+            <td style="width: 90%">{{$informecontrato->destinatario }}<br><strong>{{$informecontrato->destinatarioCargo }}</strong><br><br></td>
         </tr>
         <tr>
             <td style="width:10%" valign="top"><strong>VIA:</strong><br></td>
-            <td style="width: 90%">{!!$informecontrato->via!!}<br><br></td>
+            <td style="width: 90%">{{$informecontrato->via}}<br><strong>{{$informecontrato->viaCargo }}</strong><br><br></td>
         </tr>
         <tr>
             <td style="width:10%" valign="top"><strong>DE:</strong></td>

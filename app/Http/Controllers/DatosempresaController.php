@@ -120,6 +120,9 @@ class DatosempresaController extends Controller
      */
     public function update($id,Request $request)
     {
+        $this->validate($request, [
+            'nombreEmpresa' => 'required',
+        ]);
         $datosempresa = Datosempresa::findOrfail($id);
     	
         $datosempresa->nombreEmpresa = $request->nombreEmpresa;

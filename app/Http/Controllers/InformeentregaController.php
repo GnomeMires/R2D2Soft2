@@ -108,7 +108,11 @@ class InformeentregaController extends Controller
         
         $informeentrega->save();
 
-        return view('informeentrega.imprimirInformeEntrega', compact('informeentrega'));
+        $trabajoId = $informeentrega->trabajomoto->id;
+        $repuestosUtilizados = Repuestosutilizado::where('trabajomoto_id',$trabajoId)->get();
+        $detalletrabajos = Detalletrabajo::where('trabajomoto_id',$trabajoId)->get();
+
+        return view('informeentrega.imprimirInformeEntrega', compact('informeentrega','repuestosUtilizados','detalletrabajos'));
     }
 
     /**

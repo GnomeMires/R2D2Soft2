@@ -51,6 +51,11 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombreCompleto' => 'required',
+            'nitCI' => 'required|unique:Personas,nitCI',
+        ]);
+
         $persona = new Persona();
 
         
@@ -120,6 +125,11 @@ class PersonaController extends Controller
      */
     public function update($id,Request $request)
     {
+        $this->validate($request, [
+            'nombreCompleto' => 'required',
+            'nitCI' => 'required|unique:Personas,nitCI',
+        ]);
+
         $persona = Persona::findOrfail($id);
     	
         $persona->nombreCompleto = $request->nombreCompleto;

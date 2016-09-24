@@ -7,6 +7,15 @@
                 <button class = 'btn btn-danger'>Atras</button>
             </form>
             <br>
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form method = 'POST' action = '{{url("informecontrato")}}'>
                 <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
                 
@@ -31,7 +40,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="referido">referido</label>
+                    <label for="referido">Referido</label>
                     <input id="referido" name = "referido" type="text" class="form-control">
                 </div>
                 

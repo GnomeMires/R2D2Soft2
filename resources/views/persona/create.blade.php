@@ -3,7 +3,17 @@
 @section('content')
     <div class = 'container'>
             <h1>Crear Nuevo Cliente</h1>
-            <form method = 'get' action = '{{url("persona")}}'>
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form method = 'get' action = '{{url("persona")}}'>
                 <button class = 'btn btn-danger'>Atras</button>
             </form>
             <br>

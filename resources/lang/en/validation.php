@@ -63,7 +63,7 @@ return [
     'numeric'              => 'The :attribute must be a number.',
     'present'              => 'The :attribute field must be present.',
     'regex'                => 'The :attribute format is invalid.',
-    'required'             => 'The :attribute field is required.',
+    'required'             => 'El campo :attribute es requerido.',
     'required_if'          => 'The :attribute field is required when :other is :value.',
     'required_unless'      => 'The :attribute field is required unless :other is in :values.',
     'required_with'        => 'The :attribute field is required when :values is present.',
@@ -79,7 +79,7 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'The :attribute has already been taken.',
+    'unique'               => 'El :attribute ya existe.',
     'url'                  => 'The :attribute format is invalid.',
 
     /*
@@ -97,6 +97,16 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'costoUnitario' => [
+            'required' => 'Necesita establecer el Precio Unitario',
+        ],
+        'repuestosmoto_id' => [
+            'required' => 'Se debe elegir un Repuesto',
+        ],
+        'proovedor_id' => [
+            'required' => 'Se debe elegir un Proovedor',
+        ],
+
     ],
 
     /*

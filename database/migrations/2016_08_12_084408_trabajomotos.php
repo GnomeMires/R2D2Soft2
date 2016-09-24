@@ -26,8 +26,12 @@ class Trabajomotos extends Migration
         
         $table->date('fechaEntrega');
         
-        $table->float('adelantoRecibo');
-        
+        $table->float('costoTotal');
+
+        $table->float('totalRecibo');
+
+        $table->float('cambioRecibo');
+
         $table->boolean('estado');
         
         $table->text('descripcion');

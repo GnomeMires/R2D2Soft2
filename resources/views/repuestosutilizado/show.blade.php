@@ -18,14 +18,14 @@
                     
                     <tr>
                         <td>
-                            <b><i>fechaUso : </i></b>
+                            <b><i>Fecha de Uso : </i></b>
                         </td>
                         <td>{{$repuestosutilizado->fechaUso}}</td>
                     </tr>
                     
                     <tr>
                         <td>
-                            <b><i>cantidad : </i></b>
+                            <b><i>Cantidad : </i></b>
                         </td>
                         <td>{{$repuestosutilizado->cantidad}}</td>
                     </tr>
@@ -35,35 +35,35 @@
                         
                         <tr>
                         <td>
-                            <b><i>fechaRecepcion : </i></b>
+                            <b><i>Fecha de Recepcion : </i></b>
                         </td>
                         <td>{{$repuestosutilizado->trabajomoto->fechaRecepcion}}</td>
                         </tr>
                         
                         <tr>
                         <td>
-                            <b><i>fechaEntrega : </i></b>
+                            <b><i>Fecha de Entrega : </i></b>
                         </td>
                         <td>{{$repuestosutilizado->trabajomoto->fechaEntrega}}</td>
                         </tr>
                         
                         <tr>
                         <td>
-                            <b><i>costoTotal : </i></b>
+                            <b><i>Costo Total : </i></b>
                         </td>
                         <td>{{$repuestosutilizado->trabajomoto->costoTotal}}</td>
                         </tr>
                         
                         <tr>
                         <td>
-                            <b><i>estado : </i></b>
+                            <b><i>Estado : </i></b>
                         </td>
                         <td>{{$repuestosutilizado->trabajomoto->estado}}</td>
                         </tr>
                         
                         <tr>
                         <td>
-                            <b><i>descripcion : </i></b>
+                            <b><i>Descripcion : </i></b>
                         </td>
                         <td>{{$repuestosutilizado->descripcion}}</td>
                         </tr>
@@ -72,21 +72,21 @@
                         
                         <tr>
                         <td>
-                            <b><i>nombreRepuesto : </i></b>
+                            <b><i>Nombre Repuesto : </i></b>
                         </td>
                         <td>{{$repuestosutilizado->repuestosmoto->nombreRepuesto}}</td>
                         </tr>
                         
                         <tr>
                         <td>
-                            <b><i>codigoRepuesto : </i></b>
+                            <b><i>Codigo Repuesto : </i></b>
                         </td>
                         <td>{{$repuestosutilizado->repuestosmoto->codigoRepuesto}}</td>
                         </tr>
                         
                         <tr>
                         <td>
-                            <b><i>tipoRepuesto : </i></b>
+                            <b><i>Tipo de Repuesto : </i></b>
                         </td>
                         <td>{{$repuestosutilizado->repuestosmoto->tipoRepuesto}}</td>
                         </tr>

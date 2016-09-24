@@ -55,6 +55,10 @@ class DetalletrabajoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'detalleTrabajo' => 'required',
+            'precio' => 'required|numeric',
+        ]);
 
         $detalletrabajo = new Detalletrabajo();
 
@@ -130,6 +134,10 @@ class DetalletrabajoController extends Controller
      */
     public function update($id,Request $request)
     {
+        $this->validate($request, [
+            'detalleTrabajo' => 'required',
+            'precio' => 'required|numeric',
+        ]);
         $detalletrabajo = Detalletrabajo::findOrfail($id);
     	
         $detalletrabajo->detalleTrabajo = $request->detalleTrabajo;

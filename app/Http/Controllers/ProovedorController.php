@@ -46,6 +46,11 @@ class ProovedorController extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request, [
+            'nombreProovedor' => 'required',
+        ]);
+
         $proovedor = new Proovedor();
 
         
@@ -115,6 +120,9 @@ class ProovedorController extends Controller
      */
     public function update($id,Request $request)
     {
+        $this->validate($request, [
+            'nombreProovedor' => 'required',
+        ]);
         $proovedor = Proovedor::findOrfail($id);
     	
         $proovedor->nombreProovedor = $request->nombreProovedor;

@@ -2,7 +2,7 @@
 
 @section('content')
         <div class = 'container'>
-            <h1>Create Detalletrabajo</h1>
+            <h1>Agregar Detalle Trabajo</h1>
             <form method = 'get' action = '{{url("trabajomoto")}}/{{$id}}/show'>
                 <button class = 'btn btn-danger'>Atras</button>
             </form>
@@ -11,17 +11,16 @@
                 <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
                 
                 <div class="form-group">
-                    <label for="detalleTrabajo">detalleTrabajo</label>
+                    <label for="detalleTrabajo">Detalle del Trabajo*</label>
                     <input id="detalleTrabajo" name = "detalleTrabajo" type="text" class="form-control">
                 </div>
                 
                 <div class="form-group">
-                    <label for="estado">estado</label>
-                    <input id="estado" name = "estado" type="text" class="form-control">
+                    <input id="estado" name = "estado" type="hidden" class="form-control" value="0">
                 </div>
                 
                 <div class="form-group">
-                    <label for="precio">precio</label>
+                    <label for="precio">Precio*</label>
                     <input id="precio" name = "precio" type="text" class="form-control">
                 </div>
                 
@@ -30,7 +29,7 @@
                     <input type="hidden" name = 'trabajomoto_id' class = 'form-control' value="{{$id}}">
                 </div>
                 
-                <button class = 'btn btn-primary' type ='submit'>Create</button>
+                <button class = 'btn btn-primary' type ='submit'>Agregar Detalle</button>
             </form>
         </div>
 @endsection

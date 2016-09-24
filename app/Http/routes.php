@@ -64,11 +64,12 @@ Route::resource('trabajomoto','\R2D2Soft\Http\Controllers\TrabajomotoController'
 Route::post('trabajomoto/{id}/update','\R2D2Soft\Http\Controllers\TrabajomotoController@update');
 Route::post('trabajomoto/{id}/imprimirRecibo','\R2D2Soft\Http\Controllers\TrabajomotoController@imprimirRecibo');
 Route::get('trabajomoto/{id}/mostrarRecibo','\R2D2Soft\Http\Controllers\TrabajomotoController@mostrarRecibo');
+Route::post('moto/showMotos','\R2D2Soft\Http\Controllers\MotoController@showMotos');
 Route::get('trabajomoto/{id}/show','\R2D2Soft\Http\Controllers\TrabajomotoController@show');
 Route::get('trabajomoto/{id}/updateEstado','\R2D2Soft\Http\Controllers\TrabajomotoController@updateEstado');
 Route::get('trabajomoto/{id}/delete','\R2D2Soft\Http\Controllers\TrabajomotoController@destroy');
 Route::get('trabajomoto/{id}/deleteMsg','\R2D2Soft\Http\Controllers\TrabajomotoController@DeleteMsg');
-Route::post('moto/showMotos','\R2D2Soft\Http\Controllers\MotoController@showMotos');
+
 /********************* trabajomoto ***********************************************/
 
 

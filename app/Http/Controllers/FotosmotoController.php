@@ -63,6 +63,9 @@ class FotosmotoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'direccionFoto' => 'required|image',
+        ]);
         $fotosmoto = new Fotosmoto();
 
 

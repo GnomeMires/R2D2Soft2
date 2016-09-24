@@ -43,7 +43,7 @@ class CompraController extends Controller
      */
     public function create()
     {
-        
+
         $datosempresas = Datosempresa::all()->lists('nombreEmpresa','id');
         
         $repuestosmotos = Repuestosmoto::all()->lists('nombreRepuesto','id');
@@ -61,6 +61,13 @@ class CompraController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'cantidad' => 'required',
+            'costoUnitario' => 'required',
+            'repuestosmoto_id' => 'required',
+            'proovedor_id' => 'required',
+        ]);
+
         $compra = new Compra();
 
         

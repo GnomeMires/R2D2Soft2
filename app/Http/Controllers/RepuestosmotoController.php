@@ -51,6 +51,10 @@ class RepuestosmotoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nombreRepuesto' => 'required|unique:repuestosMotos,nombreRepuesto',
+            'precioVenta' => 'required|numeric',
+        ]);
         $repuestosmoto = new Repuestosmoto();
 
         
@@ -129,6 +133,10 @@ class RepuestosmotoController extends Controller
      */
     public function update($id,Request $request)
     {
+        $this->validate($request, [
+            'nombreRepuesto' => 'required|unique:repuestosMotos,nombreRepuesto',
+            'precioVenta' => 'required|numeric',
+        ]);
         $repuestosmoto = Repuestosmoto::findOrfail($id);
     	
         $repuestosmoto->nombreRepuesto = $request->nombreRepuesto;

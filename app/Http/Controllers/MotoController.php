@@ -53,6 +53,10 @@ class MotoController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'marca' => 'required',
+        ]);
+
         $moto = new Moto();
 
         

@@ -60,6 +60,12 @@ class RepuestosutilizadoController extends Controller
     public function store(Request $request)
     {
         $repuesto = Repuestosmoto::findorfail($request->repuestosmoto_id);
+        $this->validate($request, [
+            'repuestosmoto_id' => 'required',
+            'cantidad' => 'required',
+            'cantidad' => 'required|integer|between:1,'.$repuesto->cantidad,
+        ]);
+
         if($repuesto->cantidad>=$request->cantidad && $request->origenRepuesto != "Cliente") {
             $repuestosutilizado = new Repuestosutilizado();
 
@@ -196,7 +202,14 @@ class RepuestosutilizadoController extends Controller
     public function update($id,Request $request)
     {
         $repuestosutilizado = Repuestosutilizado::findOrfail($id);
-    	
+
+        $repuesto = Repuestosmoto::findorfail($request->repuestosmoto_id);
+        $this->validate($request, [
+            'repuestosmoto_id' => 'required',
+            'cantidad' => 'required',
+            'cantidad' => 'required|integer|between:1,'.$repuesto->cantidad,
+        ]);
+        
         $repuestosutilizado->fechaUso = $request->fechaUso;
         
         $repuestosutilizado->cantidad = $request->cantidad;

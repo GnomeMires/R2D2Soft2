@@ -7,6 +7,15 @@
                 <button class = 'btn btn-danger'>Atras</button>
             </form>
             <br>
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form method = 'POST' action = '{{url("repuestosmoto")}}/{{$repuestosmoto->id}}/update'>
                 <input type = 'hidden' name = '_token' value = '{{Session::token()}}'>
                 
