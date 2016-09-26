@@ -72,6 +72,7 @@
                                    <li><a href="{{url("trabajomoto")}}/create">Nuevo Trabajo</a></li>
                                    <li><a href="{{ url('/trabajomoto') }}">Trabajos</a></li>
                                    <li><a href="{{ url('/informecontrato') }}">Informes</a></li>
+                                   <li><a href="{{ url('/informeentrega') }}">Informes Entrega</a></li>
                                </ul>
                        </li>
                        <li><a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-btn fa-wrench"></span>Repuestos

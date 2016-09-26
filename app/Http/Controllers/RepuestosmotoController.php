@@ -134,7 +134,7 @@ class RepuestosmotoController extends Controller
     public function update($id,Request $request)
     {
         $this->validate($request, [
-            'nombreRepuesto' => 'required|unique:repuestosMotos,nombreRepuesto',
+            'nombreRepuesto' => 'required',
             'precioVenta' => 'required|numeric',
         ]);
         $repuestosmoto = Repuestosmoto::findOrfail($id);

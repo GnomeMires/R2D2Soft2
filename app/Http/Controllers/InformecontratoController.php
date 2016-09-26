@@ -58,8 +58,13 @@ class InformecontratoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nombreRepuesto' => 'required|unique:repuestosMotos,nombreRepuesto',
-            'precioVenta' => 'required|numeric',
+            'destinatario' => 'required',
+            'cargoDestinatario' => 'required',
+            'via' => 'required',
+            'cargoVia' => 'required',
+            'referido' => 'required',
+            'fechaInforme' => 'required',
+            'descripcionReparacion' => 'required',
         ]);
         $informecontrato = new Informecontrato();
 
@@ -189,6 +194,15 @@ class InformecontratoController extends Controller
      */
     public function update($id,Request $request)
     {
+        $this->validate($request, [
+            'destinatario' => 'required',
+            'cargoDestinatario' => 'required',
+            'via' => 'required',
+            'cargoVia' => 'required',
+            'referido' => 'required',
+            'fechaInforme' => 'required',
+            'descripcionReparacion' => 'required',
+        ]);
         $informecontrato = Informecontrato::findOrfail($id);
 
         $informecontrato->destinatario = $request->destinatario;

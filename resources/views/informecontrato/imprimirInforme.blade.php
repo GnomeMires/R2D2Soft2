@@ -23,9 +23,7 @@
     <br>
     <p><strong>REF:</strong>{{strtoupper($informecontrato->referido)}}</p>
     <p><strong>Fecha:</strong>{{ date('d/m/Y', strtotime($informecontrato->fechaInforme)) }}</p>
-    <br>
     <hr>
-    <br>
     <p><strong>1. REFERENCIA</strong></p>
     <p> Se hiso la recepción de la motocicleta {{$trabajomoto->moto->marca}} en fecha {{$trabajomoto->fechaRecepcion}} del presente, para la reparación y acondicionamiento de la misma.</p>
     <p><strong>2. DATOS DE IDENTIFICACION</strong></p>
@@ -70,5 +68,5 @@
     <p><strong>4. SUGERENCIAS Y/O RECOMENDACIONES</strong></p>
     <p>{{$informecontrato->sugerencias}}</p>
 </div>
-<p align="center"><a onclick = "imprSelect('container')" class = 'btn btn-primary'>Imprimir</a></p>
+
 @endsection

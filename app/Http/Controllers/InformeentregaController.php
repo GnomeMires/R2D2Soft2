@@ -60,6 +60,25 @@ class InformeentregaController extends Controller
      */
     public function store(Request $request)
     {
+        if(strpos($request->origenPersona ,'N')!==false) {
+            $this->validate($request, [
+                'condicionPago' => 'required',
+                'fechaEntrega' => 'required',
+                'fechaFactura' => 'required',
+                'noFactura' => 'required',
+                'nombreCompleto' => 'required',
+                'nitCI' => 'required|unique:Personas,nitCI',
+            ]);
+        }
+        else
+        {
+            $this->validate($request, [
+                'condicionPago' => 'required',
+                'fechaEntrega' => 'required',
+                'fechaFactura' => 'required',
+                'noFactura' => 'required',
+            ]);
+        }
         $informeentrega = new Informeentrega();
 
         
@@ -169,6 +188,12 @@ class InformeentregaController extends Controller
      */
     public function update($id,Request $request)
     {
+            $this->validate($request, [
+                'condicionPago' => 'required',
+                'fechaEntrega' => 'required',
+                'fechaFactura' => 'required',
+                'noFactura' => 'required',
+            ]);
         $informeentrega = Informeentrega::findOrfail($id);
     	
         $informeentrega->condicionPago = $request->condicionPago;
